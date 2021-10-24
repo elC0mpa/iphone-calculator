@@ -144,21 +144,17 @@ export default {
   font-size: 3rem;
   &__table {
     color: $main-color;
-    width: 30rem;
     &--input {
       display: block;
-      height: 7.5rem;
-      padding: 0.5rem 2rem;
-      margin-bottom: 1rem;
       border: none;
+      padding: 0.5rem 2rem;
       font-size: 4rem;
-      background: $background-color;
+      background: transparentize($background-color, 0.8);
       color: $main-color;
       text-align: right;
     }
   }
   &__button {
-    margin: 1rem;
     border-radius: 4rem;
     width: 8rem;
     height: 8rem;
