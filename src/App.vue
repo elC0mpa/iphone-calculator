@@ -1,5 +1,7 @@
 <template>
-  <calculator />
+  <div class="main-layout">
+    <calculator />
+  </div>
 </template>
 
 <script>
@@ -12,3 +14,14 @@ export default {
   },
 };
 </script>
+
+<style lang="scss">
+.main-layout {
+  width: 100vw;
+  height: 100vh;
+  background: $background-color;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+</style>

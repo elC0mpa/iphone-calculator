@@ -1,52 +1,44 @@
 <template>
   <div class="calculator">
-    <table class="calculator__table" cellspacing="10">
-      <tr>
-        <td colspan="4">
-          <input
-            v-model="actualValue"
-            class="calculator__table--input"
-            type="text"
-            disabled
-          />
-        </td>
-      </tr>
-      <tr>
-        <td class="calculator__button top" @click="clear">C</td>
-        <td class="calculator__button top" @click="invert">+/-</td>
-        <td class="calculator__button top" @click="percent">%</td>
-        <td class="calculator__button right" @click="operator">/</td>
-      </tr>
-      <tr>
-        <td class="calculator__button common" @click="concat">7</td>
-        <td class="calculator__button common" @click="concat">8</td>
-        <td class="calculator__button common" @click="concat">9</td>
-        <td class="calculator__button right" @click="operator">*</td>
-      </tr>
-      <tr>
-        <td class="calculator__button common" @click="concat">4</td>
-        <td class="calculator__button common" @click="concat">5</td>
-        <td class="calculator__button common" @click="concat">6</td>
-        <td class="calculator__button right" @click="operator">-</td>
-      </tr>
-      <tr>
-        <td class="calculator__button common" @click="concat">1</td>
-        <td class="calculator__button common" @click="concat">2</td>
-        <td class="calculator__button common" @click="concat">3</td>
-        <td class="calculator__button right" @click="operator">+</td>
-      </tr>
-      <tr>
-        <td
-          class="calculator__button--colspan-2 common"
-          colspan="2"
-          @click="concat"
-        >
-          0
-        </td>
-        <td class="calculator__button common" @click="addPoint">.</td>
-        <td class="calculator__button right" @click="equal">=</td>
-      </tr>
-    </table>
+    <div class="calculator__row">
+      <input
+        v-model="actualValue"
+        class="calculator__input col-span-4"
+        type="text"
+        disabled
+      />
+    </div>
+    <div class="calculator__row">
+      <button class="calculator__button top" @click="clear">C</button>
+      <button class="calculator__button top" @click="invert">+/-</button>
+      <button class="calculator__button top" @click="percent">%</button>
+      <button class="calculator__button right" @click="operator">/</button>
+    </div>
+    <div class="calculator__row">
+      <button class="calculator__button common" @click="concat">7</button>
+      <button class="calculator__button common" @click="concat">8</button>
+      <button class="calculator__button common" @click="concat">9</button>
+      <button class="calculator__button right" @click="operator">*</button>
+    </div>
+    <div class="calculator__row">
+      <button class="calculator__button common" @click="concat">4</button>
+      <button class="calculator__button common" @click="concat">5</button>
+      <button class="calculator__button common" @click="concat">6</button>
+      <button class="calculator__button right" @click="operator">-</button>
+    </div>
+    <div class="calculator__row">
+      <button class="calculator__button common" @click="concat">1</button>
+      <button class="calculator__button common" @click="concat">2</button>
+      <button class="calculator__button common" @click="concat">3</button>
+      <button class="calculator__button right" @click="operator">+</button>
+    </div>
+    <div class="calculator__row">
+      <button class="calculator__button col-span-2 common" @click="concat">
+        0
+      </button>
+      <button class="calculator__button common" @click="addPoint">.</button>
+      <button class="calculator__button right" @click="equal">=</button>
+    </div>
   </div>
 </template>
 
@@ -135,39 +127,40 @@ export default {
 
 <style lang="scss">
 .calculator {
-  width: 100vw;
-  height: 100vh;
-  background: $background-color;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 3rem;
-  &__table {
-    color: $main-color;
-    &--input {
-      display: block;
-      border: none;
-      padding: 0.5rem 2rem;
-      font-size: 4rem;
-      background: transparentize($background-color, 0.8);
-      color: $main-color;
-      text-align: right;
+  width: 35rem;
+  &__row {
+    margin-bottom: 0.5rem;
+    display: flex;
+    > * {
+      flex: 0 0 25%;
+    }
+    > .col-span-4 {
+      flex: 0 0 100%;
+    }
+    > .col-span-2 {
+      flex: 0 0 50%;
     }
   }
+  &__input {
+    width: 100%;
+    border: none;
+    padding: 0.5rem 2rem;
+    font-size: 4rem;
+    background: transparent;
+    color: $main-color;
+    text-align: right;
+  }
   &__button {
-    border-radius: 4rem;
-    width: 8rem;
-    height: 8rem;
+    font-size: 2rem;
+    border-radius: 3rem;
+    height: 6rem;
     text-align: center;
     font-weight: bold;
     cursor: pointer;
-    &--colspan-2 {
-      border-radius: 4rem;
-      width: 16rem;
-      height: 8rem;
-      text-align: center;
-      font-weight: bold;
-      cursor: pointer;
+    margin-right: 0.5rem;
+    border: none;
+    &.col-span-2 {
+      margin-right: 1rem;
     }
   }
   .common {
