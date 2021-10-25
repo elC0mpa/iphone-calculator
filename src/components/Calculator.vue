@@ -128,6 +128,9 @@ export default {
 <style lang="scss">
 .calculator {
   width: 35rem;
+  @include responsive(smallest-bp) {
+    width: 30rem;
+  }
   &__row {
     margin-bottom: 0.5rem;
     display: flex;
