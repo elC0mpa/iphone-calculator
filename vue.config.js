@@ -1,4 +1,5 @@
 module.exports = {
+  publicPath: '/iphone-calculator/',
   css: {
     loaderOptions: {
       sass: {
